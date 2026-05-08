@@ -1,0 +1,8 @@
+{
+    "apartament": {
+        "scene1": [
+            {"speaker": "Player", "text": ["...", "I need to go home"]},
+            {"speaker": "dev", "text": ["This is your house", "Go inside?"]}
+        ]
+    }
+}
