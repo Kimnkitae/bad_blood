@@ -1,14 +1,13 @@
-import Player from '../../../utils/player.js'
+import BaseApartamentScene from './apartament.js'
 
-export class Chapter1ApartamentScene3 extends Phaser.Scene {
+export class Chapter1ApartamentScene3 extends BaseApartamentScene {
     constructor() {
         super({ key: 'Chapter1ApartamentScene3'})
     }
 
     create() {
-        this.add.image(500, 300, 'apartament')
-
-        this.player = new Player(this, 100, 200)
+        super.create()
+        super.initPlayer(510, 100)
     }
 
 }

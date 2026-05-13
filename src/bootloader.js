@@ -30,6 +30,7 @@ export default class Bootloader extends Phaser.Scene {
     }
 
     loadTexts() {
+        this.load.bitmapFont('W95FA', 'assets/fonts/W95FA.png', 'assets/fonts/W95FA.fnt')
         this.load.json('chapter1Scene1', "assets/texts/chapter1.json")
     }
 
@@ -47,6 +48,6 @@ export default class Bootloader extends Phaser.Scene {
     }
     
     create() {
-        this.scene.start('Chapter1ApartamentScene3')
+        this.scene.start('Chapter1ApartamentScene1')
     }
 }

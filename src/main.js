@@ -7,6 +7,11 @@ const config = {
     title: 'bad_blood',
     description: '2D psyhological horror',
     pixelArt: true,
+    render: {
+        antialias: true,
+        roundPixels: true,
+        roundPixels: true
+    },
     parent: 'game-container',
     width: 1280,
     height: 720,
@@ -14,7 +19,7 @@ const config = {
         default: 'arcade', 
         arcade: {
             gravity: { y: 0 },
-            debug: true // видеть границы объектов    
+            debug: false // видеть границы объектов    
         }
     },
     fps: {

@@ -48,6 +48,7 @@ export default class Player {
     
 
     update() {
+        
         if(this.cursors.down.isDown) {
             this.sprite.setVelocityY(70)
             this.sprite.anims.play('down', true)
