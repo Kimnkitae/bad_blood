@@ -1,5 +1,5 @@
 import Player from '../../../utils/player/player.js'
-
+import NextText from '../../../utils/texts/nextText.js'
 export default class BaseStreetScene extends Phaser.Scene {
     constructor(config) {
         super(config)
@@ -23,11 +23,25 @@ export default class BaseStreetScene extends Phaser.Scene {
     }
 
     initPlayer(x, y) {
+        const spaceBar = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE)
+        const dialogueText = this.cache.json.get('chapter1Scene1')
         this.player = new Player(this, x, y)
-        this.physics.add.collider(this.player.sprite, this.trees)
+        this.physics.add.collider(this.player.sprite, this.trees, () => {
+            spaceBar.on('down', () => {
+                this.text = new NextText(this, dialogueText.apartament.scene1[1].text, 100, 540)
+            })
+        })
         this.physics.add.collider(this.player.sprite, this.walls)
-        this.physics.add.collider(this.player.sprite, this.chairs)
-        this.physics.add.collider(this.player.sprite, this.house)
+        this.physics.add.collider(this.player.sprite, this.chairs, () => {
+            spaceBar.on('down', () => {
+                this.text = new NextText(this, dialogueText.apartament.scene1[2].text, 100, 540)
+            })
+        })
+        this.physics.add.collider(this.player.sprite, this.house, () => {
+            spaceBar.on('down', () => {
+                this.text = new NextText(this, dialogueText.apartament.scene1[3].text, 100, 540, 'Chapter1ApartamentScene3')
+            })
+        })
     }
 
     update() {

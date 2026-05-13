@@ -22,6 +22,7 @@ export default class NextText {
         spaceBar.on('down', () => {
         if(this.text.length == this.currentIndex) {
             if(nextScene === null) {
+                this.dialogue = null
             } else {
                 this.scene.cameras.main.fade(1000, 0, 0, 0, false, (camera, progress) => {
                     if (progress === 1) { 

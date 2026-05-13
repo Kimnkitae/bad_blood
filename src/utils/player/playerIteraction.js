@@ -1,5 +1,12 @@
 export default class PlayerIteraction {
-    constructor() {
-        
+    constructor(scene, callback) {
+        this.scene = scene
+        this.callback = callback
+        this.iteraction()
     }
+
+    iteraction() {
+        const 
+    }
+
 }
