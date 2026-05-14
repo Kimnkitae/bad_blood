@@ -6,7 +6,7 @@ export default class PlayerIteraction {
     }
 
     iteraction() {
-        const 
+        
     }
 
 }

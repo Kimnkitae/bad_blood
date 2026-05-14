@@ -1,12 +1,43 @@
 {
-    "apartament": {
-        "scene1": {
-            "street": [
-                {"info": "First line in the game", "speaker": "Player", "text": ["...", "I need to go home"]},
-                {"info": "About the trees", "speaker": "Player", "text": ["This is trees", "What if i burn them?"]},
-                {"info": "About the chair", "speaker": "dev", "text": ["You sleeped here, but why?"]},
-                {"info": "Enter to House", "speaker": "dev", "text": ["This is your house", "Go inside?"]}
-            ]
+  "apartament": {
+    "scene1": {
+      "street": [
+        {
+          "type": "chat",
+          "speaker": "Player",
+          "text": ["...", "I need to go home"],
+          "info": "First line in the game"
+        },
+        {
+          "type": "chat",
+          "speaker": "Player",
+          "text": ["This is trees", "What if i burn them?"],
+          "info": "About the trees"
+        },
+        {
+          "type": "chat",
+          "speaker": "dev",
+          "text": ["You sleeped here, but why?"],
+          "info": "About the chair"
+        },
+        {
+          "type": "choice",
+          "speaker": "System",
+          "question": "This is your house. Go in?",
+          "options": [
+            { 
+              "text": "Yes", 
+              "next_scene": "Chapter1ApartamentScene3",
+              "action": "enter_house" 
+            },
+            { 
+              "text": "No", 
+              "next_scene": null,
+              "action": "stay_outside" 
+            }
+          ]
         }
+      ]
     }
+  }
 }

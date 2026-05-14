@@ -1,5 +1,5 @@
 export default class NextText {
-    constructor(scene, text, x, y, nextScene = null) {
+    constructor(scene, text, x, y, nextScene) {
         this.scene = scene
         this.text = text
         this.init(x,y, nextScene)
@@ -13,7 +13,7 @@ export default class NextText {
         
     }
 
-    nextText(x,y, nextScene = null)
+    nextText(x,y, nextScene)
     {
         
         this.dialogue = this.scene.add.bitmapText(x, y, 'W95FA', this.text[this.currentIndex], 36)
@@ -22,7 +22,7 @@ export default class NextText {
         spaceBar.on('down', () => {
         if(this.text.length == this.currentIndex) {
             if(nextScene === null) {
-                this.dialogue = null
+                this.dialogue = ''
             } else {
                 this.scene.cameras.main.fade(1000, 0, 0, 0, false, (camera, progress) => {
                     if (progress === 1) { 
@@ -30,15 +30,16 @@ export default class NextText {
                     }
                 })
             }
+            
+            this.input.keyboard.removeKey(Phaser.Input.Keyboard.KeyCodes.SPACE)
+        
         } else {
             this.dialogue.setText(this.text[this.currentIndex])
             this.currentIndex++
             
         }
 
-        this.events.on('shutdown', () => {
-            this.input.keyboard.removeKey(Phaser.Input.Keyboard.KeyCodes.SPACE)
-        });
+        
        })
        
        

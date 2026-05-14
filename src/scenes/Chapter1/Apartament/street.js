@@ -28,18 +28,19 @@ export default class BaseStreetScene extends Phaser.Scene {
         this.player = new Player(this, x, y)
         this.physics.add.collider(this.player.sprite, this.trees, () => {
             spaceBar.on('down', () => {
-                this.text = new NextText(this, dialogueText.apartament.scene1[1].text, 100, 540)
+                this.text = new NextText(this, dialogueText.apartament.scene1.street[1].text, 100, 540, null)
             })
         })
+        
         this.physics.add.collider(this.player.sprite, this.walls)
         this.physics.add.collider(this.player.sprite, this.chairs, () => {
             spaceBar.on('down', () => {
-                this.text = new NextText(this, dialogueText.apartament.scene1[2].text, 100, 540)
+                this.text = new NextText(this, dialogueText.apartament.scene1.street[2].text, 100, 540, null)
             })
         })
         this.physics.add.collider(this.player.sprite, this.house, () => {
             spaceBar.on('down', () => {
-                this.text = new NextText(this, dialogueText.apartament.scene1[3].text, 100, 540, 'Chapter1ApartamentScene3')
+                this.text = new NextText(this, dialogueText.apartament.scene1.street[3].text, 100, 540, 'Chapter1ApartamentScene3')
             })
         })
     }

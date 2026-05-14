@@ -7,7 +7,7 @@ export class Chapter1ApartamentScene3 extends BaseApartamentScene {
 
     create() {
         super.create()
-        super.initPlayer(510, 100)
+        super.initPlayer(510, 130)
     }
 
 }

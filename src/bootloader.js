@@ -12,6 +12,8 @@ export default class Bootloader extends Phaser.Scene {
     }
 
     loadImages() {
+
+        /* Street */
         this.load.image('C1AS1_street', 'assets/street/street.png')
         this.load.image('C1AS1_bottom', 'assets/street/bottom.png')
         this.load.image('C1AS1_right', 'assets/street/right.png')
@@ -22,7 +24,28 @@ export default class Bootloader extends Phaser.Scene {
         this.load.image('C1AS1_chair', 'assets/street/chair.png')
         this.load.image('C1AS1_player-sleep', 'assets/player/player-sleep.png')
         this.load.image('placeholder', 'assets/holder-text/holder-text.png')
+
+        /* Apartment */
+
         this.load.image('apartament', 'assets/apartament/apartament.png')
+        this.load.image('C1AS3_bottomWall', 'assets/apartament/BottomWall.png')
+        this.load.image('C1AS3_topWall', 'assets/apartament/TopWall.png')
+        this.load.image('C1AS3_leftWall', 'assets/apartament/LeftWall.png')
+        this.load.image('C1AS3_room', 'assets/apartament/openRoom.png')
+        this.load.image('C1AS3_kitchen', 'assets/apartament/openKitchen.png')
+        this.load.image('C1AS3_tv', 'assets/apartament/TV.png')
+        this.load.image('C1AS3_chair', 'assets/apartament/chair.png')
+        this.load.image('C1AS3_exit', 'assets/apartament/exit.png')
+
+        /* room */
+
+        this.load.image('room', 'assets/room/room.png')
+        this.load.image('C1AS4_bed', 'assets/room/bed.png')
+        this.load.image('C1AS4_door', 'assets/room/door.png')
+        this.load.image('C1AS4_leftWall', 'assets/room/leftWall.png')
+        this.load.image('C1AS4_topWall', 'assets/room/topWall.png')
+        this.load.image('C1AS4_windows', 'assets/room/windows.png')
+
     }
 
     loadSounds() {
@@ -39,7 +62,6 @@ export default class Bootloader extends Phaser.Scene {
         this.load.spritesheet('player', 'assets/player.png', {
             frameWidth: 46,
             frameHeight: 64,
-
         })
     }
 
@@ -48,6 +70,6 @@ export default class Bootloader extends Phaser.Scene {
     }
     
     create() {
-        this.scene.start('Chapter1ApartamentScene1')
+        this.scene.start('Chapter1ApartamentScene4')
     }
 }
