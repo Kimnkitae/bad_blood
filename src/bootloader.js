@@ -40,7 +40,6 @@ export default class Bootloader extends Phaser.Scene {
         /* room */
 
         this.load.image('room', 'assets/room/room.png')
-        this.load.image('C1AS4_bed', 'assets/room/bed.png')
         this.load.image('C1AS4_door', 'assets/room/door.png')
         this.load.image('C1AS4_leftWall', 'assets/room/leftWall.png')
         this.load.image('C1AS4_topWall', 'assets/room/topWall.png')
@@ -70,6 +69,6 @@ export default class Bootloader extends Phaser.Scene {
     }
     
     create() {
-        this.scene.start('Chapter1ApartamentScene4')
+        this.scene.start('Chapter1ApartamentScene1')
     }
 }

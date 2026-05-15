@@ -12,7 +12,7 @@ export default class BaseRoomScene extends Phaser.Scene {
         this.door = this.physics.add.staticGroup()
         this.bed = this.physics.add.staticGroup()
 
-        this.walls.add(100, 100, 'C1AS4_bed')
+        
         
     }
 
