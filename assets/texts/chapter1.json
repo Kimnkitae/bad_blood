@@ -1,26 +1,26 @@
 {
   "apartament": {
     "scene1": {
-      "street": [
-        {
+      "street": {
+        "firstLine": {
           "type": "chat",
           "speaker": "Player",
           "text": ["...", "I need to go home"],
           "info": "First line in the game"
         },
-        {
+        "treesInteraction": {
           "type": "chat",
           "speaker": "Player",
           "text": ["This is trees", "What if i burn them?"],
           "info": "About the trees"
         },
-        {
+        "chairInteraction": {
           "type": "chat",
           "speaker": "dev",
           "text": ["You sleeped here, but why?"],
           "info": "About the chair"
         },
-        {
+        "enterToHouse": {
           "type": "choice",
           "speaker": "System",
           "question": "This is your house. Go in?",
@@ -37,7 +37,87 @@
             }
           ]
         }
-      ]
+      },
+      "apartament": {
+        "firstLine": {
+          "type": "chat",
+          "speaker": "Player",
+          "text": ["mmmm..", "SO difficult to live on the fourth floor"],
+          "info": "First line in the apart scene"
+        },
+        "enterToRoom": {
+          "type": "choice",
+          "speaker": "System",
+          "question": "This is your room. Go in?",
+            "options": [
+            { 
+              "text": "Yes", 
+              "next_scene": "Chapter1ApartamentScene4",
+              "action": "enter_room" 
+            },
+            { 
+              "text": "No", 
+              "next_scene": null,
+              "action": "stay_in_house" 
+            }
+          ]
+        },
+        "enterToKitchen": {
+          "type": "choice",
+          "speaker": "System",
+          "question": "This is kitchen. Go in?",
+            "options": [
+            { 
+              "text": "Yes", 
+              "next_scene": "Chapter1ApartamentSceneKitchen",
+              "action": "enter_kitchen" 
+            },
+            { 
+              "text": "No", 
+              "next_scene": null,
+              "action": "stay_in_house" 
+            }
+          ]
+        },
+        "momInteract": {
+          "type": "chat",
+          "speaker": "dev",
+          "text": ["Son, i'm too tired", "Maybe later?"],
+          "info": "Talking with mom"
+        },
+        "ImageInteract": {
+          "type": "chat",
+          "speaker": "dev",
+          "text": ["Mom bought it on the sale", "There is a sentence", "by Da Vinchi"],
+          "info": "About the image"
+        }
+      },
+      "room": {
+        "windowInteract": {
+          "type": "chat",
+          "speaker": "dev",
+          "text": ["Not"],
+          "info": "About the windows"
+        },
+        "bedInteract": {
+          "type": "choise",
+          "speaker": "System",
+          "question": "take a rest?",
+            "options": [
+            { 
+              "text": "Yes", 
+              "next_scene": "Chapter1ApartamentScene5",
+              "action": "sleep" 
+            },
+            { 
+              "text": "No", 
+              "next_scene": null,
+              "action": "stay_in_room" 
+            }
+          ]
+        }
+      }
+
     }
   }
 }

@@ -23,7 +23,7 @@ export default class BaseStreetScene extends Phaser.Scene {
     }
 
     initPlayer(x, y) {
-        const spaceBar = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE)
+        
         const dialogueText = this.cache.json.get('chapter1Scene1')
         this.player = new Player(this, x, y)
         this.physics.add.collider(this.player.sprite, this.trees, () => {

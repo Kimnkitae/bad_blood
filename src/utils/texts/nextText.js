@@ -16,7 +16,7 @@ export default class NextText {
     nextText(x,y, nextScene)
     {
         
-        this.dialogue = this.scene.add.bitmapText(x, y, 'W95FA', this.text[this.currentIndex], 36)
+        /* this.dialogue = this.scene.add.bitmapText(x, y, 'W95FA', this.text[this.currentIndex], 36)
         
         const spaceBar = this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE)
         spaceBar.on('down', () => {
@@ -41,7 +41,7 @@ export default class NextText {
 
         
        })
-       
+        */
        
     }
 }

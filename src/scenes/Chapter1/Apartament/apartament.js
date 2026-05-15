@@ -27,7 +27,7 @@ export default class BaseApartamentScene extends Phaser.Scene {
     initPlayer(x, y) {
         this.player = new Player(this, x, y)
         this.physics.add.collider(this.player.sprite, this.walls, () => {
-
+            
         })
 
         this.physics.add.collider(this.player.sprite, this.room, () => {
