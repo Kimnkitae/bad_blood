@@ -16,9 +16,9 @@ export default class BaseStreetScene extends Phaser.Scene {
         this.walls.create(274, 26, 'C1AS1_top')
         this.walls.create(54, 200, 'C1AS1_left')
         
-        this.trees.create(134, 102, 'C1AS1_trees')
-        this.house.create(264, 350, 'C1AS1_house')
-        this.chairs.create(149, 192, 'C1AS1_chair')
+        this.trees.create(134, 102, 'C1AS1_trees').setData('textKey', "treesInteraction")
+        this.house.create(264, 350, 'C1AS1_house').setData('textKey', 'enterToHouse')
+        this.chairs.create(149, 192, 'C1AS1_chair').setData('textKey', 'chairInteraction')
 
     }
 
