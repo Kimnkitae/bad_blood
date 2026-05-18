@@ -3,15 +3,12 @@ export default class Player {
         this.scene = scene
         this.label = 'player'
         this.init(x, y) 
-        
     }
-
 
     init(x, y) {
         this.sprite = this.scene.physics.add.sprite(x, y, 'player')
         this.addAnimations()
         this.addMovements()
-        
     }
 
     addAnimations() {
@@ -45,8 +42,6 @@ export default class Player {
         this.cursors = this.scene.input.keyboard.createCursorKeys()
     }
 
-    
-
     update() {
         
         if(this.cursors.down.isDown) {
@@ -69,6 +64,5 @@ export default class Player {
             this.sprite.setVelocityY(0)
             this.sprite.anims.play('down', true)
         }
-        
     }
 }

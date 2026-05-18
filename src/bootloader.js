@@ -69,6 +69,6 @@ export default class Bootloader extends Phaser.Scene {
     }
     
     create() {
-        this.scene.start('Chapter1ApartamentScene1')
+        this.scene.start('Chapter1ApartamentScene2')
     }
 }

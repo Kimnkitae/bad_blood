@@ -19,14 +19,22 @@ export default class BaseStreetScene extends Phaser.Scene {
         this.trees.create(134, 102, 'C1AS1_trees').setData('textKey', "treesInteraction")
         this.house.create(264, 350, 'C1AS1_house').setData('textKey', 'enterToHouse')
         this.chairs.create(149, 192, 'C1AS1_chair').setData('textKey', 'chairInteraction')
-
     }
 
+
     initPlayer(x, y) {
+        this.isInteract = false
         
-        const dialogueText = this.cache.json.get('chapter1Scene1')
+        const jsonText = this.cache.json.get('chapter1Scene1')
+        this.streetText = jsonText.apartament.scene1.street
+        
         this.player = new Player(this, x, y)
-        this.physics.add.collider(this.player.sprite, this.trees, () => {
+        this.physics.add.collider(this.player.sprite, this.trees, (player, collidedObj) => {
+            this.isInteract = true
+            
+            let currentKey = collidedObj.getData('textKey')
+            const text = this.streetText[currentKey]
+            const nextText = new NextText(this, text)
             
         })
         
