@@ -33,19 +33,41 @@ export default class BaseStreetScene extends Phaser.Scene {
         this.physics.add.collider(this.player.sprite, this.trees, (player, collidedObj) => {
             if(this.isTextShowing) return
             this.isTextShowing = true
-            
+            this.player.sprite.setVelocity(0);
             let currentKey = collidedObj.getData('textKey')
             const text = this.streetText[currentKey]
-            this.nextText = new NextText(this, text)
+            this.nextText = new NextText(this, text, () => {
+                this.isTextShowing = false
+                this.player.isFrozen = false
+                this.nextText = null
+            }) 
             
         })
         
         this.physics.add.collider(this.player.sprite, this.walls)
-        this.physics.add.collider(this.player.sprite, this.chairs, () => {
-            
+        this.physics.add.collider(this.player.sprite, this.chairs, (player, collidedObj) => {
+            if(this.isTextShowing) return
+            this.isTextShowing = true
+            this.player.sprite.setVelocity(0);
+            let currentKey = collidedObj.getData('textKey')
+            const text = this.streetText[currentKey]
+            this.nextText = new NextText(this, text, () => {
+                this.isTextShowing = false
+                this.player.isFrozen = false
+                this.nextText = null
+            }) 
         })
         this.physics.add.collider(this.player.sprite, this.house, () => {
-            
+            if(this.isTextShowing) return
+            this.isTextShowing = true
+            this.player.sprite.setVelocity(0);
+            let currentKey = collidedObj.getData('textKey')
+            const text = this.streetText[currentKey]
+            this.nextText = new NextText(this, text, () => {
+                this.isTextShowing = false
+                this.player.isFrozen = false
+                this.nextText = null
+            }) 
         })
     }
 

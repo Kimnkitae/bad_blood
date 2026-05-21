@@ -43,6 +43,10 @@ export default class Player {
     }
 
     update() {
+        if (this.isFrozen) { 
+            this.sprite.setVelocity(0)
+            return
+        }
         
         if(this.cursors.down.isDown) {
             this.sprite.setVelocityY(70)
