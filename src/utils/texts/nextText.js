@@ -1,11 +1,11 @@
 export default class NextText {
     constructor(scene, dialogueKey, endAll) {
         this.scene = scene;
-        this.dialogueKey = dialogueKey;
-        this.endAll = endAll; // Сохраняем колбэк для завершения
-        this.k = 0;
+        this.dialogueKey = dialogueKey
+        this.endAll = endAll
+        this.k = 0
         
-        this.init();
+        this.init()
     }
 
     init() {
@@ -16,7 +16,7 @@ export default class NextText {
     }
 
     handleNext() {
-        this.k++;
+        this.k++
 
         // Проверяем, есть ли еще текст
         if (this.k < this.dialogueKey.text.length) {
@@ -28,10 +28,10 @@ export default class NextText {
 
     endText() {
         
-        this.textObject.destroy();
+        this.textObject.destroy()
         this.spaceBar.off('down', this.handleNext, this)
         
         
-        if (this.endAll) this.endAll();
+        if (this.endAll) this.endAll()
     }
 }

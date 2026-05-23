@@ -1,5 +1,6 @@
 import Player from '../../../utils/player/player.js'
 import NextText from '../../../utils/texts/nextText.js'
+import Choose from '../../../utils/choose/Choose.js'
 export default class BaseStreetScene extends Phaser.Scene {
     constructor(config) {
         super(config)
@@ -33,14 +34,25 @@ export default class BaseStreetScene extends Phaser.Scene {
         this.physics.add.collider(this.player.sprite, this.trees, (player, collidedObj) => {
             if(this.isTextShowing) return
             this.isTextShowing = true
-            this.player.sprite.setVelocity(0);
+            this.player.isFrozen = true
             let currentKey = collidedObj.getData('textKey')
             const text = this.streetText[currentKey]
             this.nextText = new NextText(this, text, () => {
                 this.isTextShowing = false
                 this.player.isFrozen = false
+                this.player.addMovements = true
                 this.nextText = null
             }) 
+            
+        })
+
+        this.physics.add.collider(this.player.sprite, this.house, (player, collidedObj) => {
+            if(this.isTextShowing) return
+            this.isTextShowing = true
+            this.player.isFrozen = true
+            let currentKey = collidedObj.getData('textKey')
+            const text = this.streetText[currentKey]
+            this.nextText = new Choose(this, text) 
             
         })
         
@@ -48,19 +60,8 @@ export default class BaseStreetScene extends Phaser.Scene {
         this.physics.add.collider(this.player.sprite, this.chairs, (player, collidedObj) => {
             if(this.isTextShowing) return
             this.isTextShowing = true
-            this.player.sprite.setVelocity(0);
-            let currentKey = collidedObj.getData('textKey')
-            const text = this.streetText[currentKey]
-            this.nextText = new NextText(this, text, () => {
-                this.isTextShowing = false
-                this.player.isFrozen = false
-                this.nextText = null
-            }) 
-        })
-        this.physics.add.collider(this.player.sprite, this.house, () => {
-            if(this.isTextShowing) return
-            this.isTextShowing = true
-            this.player.sprite.setVelocity(0);
+            this.player.isFrozen = true
+            this.player.sprite.setVelocity(0)
             let currentKey = collidedObj.getData('textKey')
             const text = this.streetText[currentKey]
             this.nextText = new NextText(this, text, () => {
@@ -76,6 +77,7 @@ export default class BaseStreetScene extends Phaser.Scene {
         if (this.isTextShowing && this.player && this.player.sprite.body.touching.none) {
             this.isTextShowing = false
             this.nextText = null
+            
         }
 
 

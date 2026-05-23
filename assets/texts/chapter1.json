@@ -100,7 +100,7 @@
           "info": "About the windows"
         },
         "bedInteract": {
-          "type": "choise",
+          "type": "choice",
           "speaker": "System",
           "question": "take a rest?",
             "options": [
