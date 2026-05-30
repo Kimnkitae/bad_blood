@@ -11,6 +11,7 @@ export default class NextText {
     init() {
         this.textObject = this.scene.add.bitmapText(65, 520, 'W95FA', this.dialogueKey.text[0], 32)
         
+        
         this.spaceBar = this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE)
         this.spaceBar.on('down', this.handleNext, this)
     }
@@ -21,6 +22,7 @@ export default class NextText {
         // Проверяем, есть ли еще текст
         if (this.k < this.dialogueKey.text.length) {
             this.textObject.setText(this.dialogueKey.text[this.k])
+            
         } else {
             this.endText()
         }

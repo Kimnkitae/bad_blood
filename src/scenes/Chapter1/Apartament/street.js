@@ -50,13 +50,21 @@ export default class BaseStreetScene extends Phaser.Scene {
             if(this.isTextShowing) return
             this.isTextShowing = true
             this.player.isFrozen = true
+            this.player.sprite.setVelocity(0)
             let currentKey = collidedObj.getData('textKey')
             const text = this.streetText[currentKey]
-            this.nextText = new Choose(this, text) 
+            this.nextText = new Choose(this, text, () => {
+                this.isTextShowing = false
+                this.player.isFrozen = false
+                this.nextText = null
+            }, () => {
+                this.scene.start('Chapter1ApartamentScene3')
+            }) 
             
         })
         
         this.physics.add.collider(this.player.sprite, this.walls)
+
         this.physics.add.collider(this.player.sprite, this.chairs, (player, collidedObj) => {
             if(this.isTextShowing) return
             this.isTextShowing = true

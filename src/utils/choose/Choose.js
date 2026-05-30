@@ -1,59 +1,85 @@
 export default class Choose {
-    constructor(scene, chooseKey) {
+    constructor(scene, chooseKey, endAll, toDo) {
         this.scene = scene
+        this.endAll = endAll
         this.chooseKey = chooseKey
+        this.toDo = toDo 
         this.init()
     }
 
     init() {
-        this.isFirstSelected = true
-        this.isSecondSelected = false
-        this.firstChoiceScene = this.chooseKey.options[0].next_scene
-        this.secondChoiceScene = this.chooseKey.options[1].next_scene
-        this.chooseText = this.scene.add.bitmapText(65, 520, 'W95FA', this.chooseKey.question, 32)
-        this.firstChoose = this.scene.add.bitmapText(120, 600, 'W95FA', this.chooseKey.options[0].text, 32)
-        this.secondChoose = this.scene.add.bitmapText(240, 600, 'W95FA', this.chooseKey.options[1].text, 32)
-        this.circleText = this.scene.add.image(100, 540, 'effect-e')
-        
+        this.text = this.scene.add.bitmapText(65, 520, 'W95FA', this.chooseKey.question, 32)
+        this.firstChooseText = this.scene.add.bitmapText(140, 560, 'W95FA', this.chooseKey.options[0].text, 32)
+        this.secondChooseText = this.scene.add.bitmapText(240, 560, 'W95FA', this.chooseKey.options[1].text, 32)
+        this.effectCircle = this.scene.add.image(120, 570, 'effect-e')
+        this.firstChooseState = true
+        this.secondChooseState = false
 
-        this.selectFirst()
-        this.cursors = this.scene.input.keyboard.createCursorKeys()
+        
+        this.leftArrow = this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT)
+        this.rightArrow = this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT)
         this.spaceBar = this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE)
-        this.spaceBar.on('down', this.handleChoose, this)
-    }
-
-    update() {
-        if(this.cursors.left.isDown) {
-            this.selectFirst()
-        }
-        if(this.cursors.right.isDown) {
-            this.selectSecond()
-        }
-    }
-
-    selectFirst() {
-        this.isFirstSelected = true
-        this.isSecondSelected = false
-        this.circleText.setPosition(100, 540)
         
+        this.leftArrow.on('down', this.moveLeft, this)
+        this.rightArrow.on('down', this.moveRight, this)
+        this.spaceBar.on('down', this.handleSelect, this)
     }
 
-    selectSecond() {
-        this.isFirstSelected = false
-        this.isSecondSelected = true
-        this.circleText.setPosition(300, 540)
+    moveLeft() {
+        if (!this.firstChooseState) {
+            this.firstChooseState = true
+            this.secondChooseState = false
+            this.effectCircle.setPosition(120, 570)
+        }
+    }
+
+    moveRight() {
+        if (!this.secondChooseState) {
+            this.firstChooseState = false
+            this.secondChooseState = true
+            this.effectCircle.setPosition(230, 570)
+        }
+    }
+
+    handleSelect() {
+        if (this.firstChooseState) {
+            
+            
+            
+            
+            if (this.toDo) {
+                this.toDo() 
+            }
+            
+            
+            if (this.chooseKey.options[0].callback) {
+                this.chooseKey.options[0].callback()
+            }
+            
+        } else if (this.secondChooseState) {
+            
+            
+            
+            if (this.chooseKey.options[1].callback) {
+                this.chooseKey.options[1].callback()
+            }
+        }
         
+        
+        this.destroy()
+        
+        
+        this.endAll()
     }
 
-    handleChoose() {
-        if(this.isFirstSelected && this.isSecondSelected === false) {
-            this.scene.start(this.firstChoiceScene)
-        }
-
-        if(this.isFirstSelected === false && this.isSecondSelected) {
-            this.scene.start(this.secondChoiceScene)
-        }
+    destroy() {
+        this.leftArrow.off('down', this.moveLeft, this)
+        this.rightArrow.off('down', this.moveRight, this)
+        this.spaceBar.off('down', this.handleSelect, this)
+        
+        this.text.destroy()
+        this.firstChooseText.destroy()
+        this.secondChooseText.destroy()
+        this.effectCircle.destroy()
     }
-
-    
 }
