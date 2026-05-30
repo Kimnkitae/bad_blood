@@ -18,7 +18,7 @@ export default class Choose {
 
         this.selectFirst()
         this.cursors = this.scene.input.keyboard.createCursorKeys()
-        this.spaceBar = 
+        this.spaceBar = this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE)
         this.spaceBar.on('down', this.handleChoose, this)
     }
 
@@ -46,11 +46,11 @@ export default class Choose {
     }
 
     handleChoose() {
-        if(this.isFirstSelected && isSecondSelected === false) {
+        if(this.isFirstSelected && this.isSecondSelected === false) {
             this.scene.start(this.firstChoiceScene)
         }
 
-        if(this.isFirstSelected === false && isSecondSelected) {
+        if(this.isFirstSelected === false && this.isSecondSelected) {
             this.scene.start(this.secondChoiceScene)
         }
     }
